@@ -1259,6 +1259,23 @@ class API(object):
         )
 
     @property
+    def search_universal(self):
+        """ :reference: https://gist.github.com/cucmberium/e687e88565b6a9ca7039
+            :allowed_param:'q', 'lang', 'locale', 'since_id', 'geocode',
+             'max_id', 'since', 'until', 'result_type', 'count',
+              'include_entities', 'from', 'to', 'source', 'module'
+        """
+        return bind_api(
+            api=self,
+            path='/search/universal.json',
+            payload_type='search_results',
+            allowed_param=['q', 'lang', 'locale', 'since_id', 'geocode',
+                           'max_id', 'since', 'until', 'result_type',
+                           'count', 'include_entities', 'from',
+                           'to', 'source', 'modules']
+        )
+
+    @property
     def reverse_geocode(self):
         """ :reference: https://dev.twitter.com/rest/reference/get/geo/reverse_geocode
             :allowed_param:'lat', 'long', 'accuracy', 'granularity', 'max_results'
